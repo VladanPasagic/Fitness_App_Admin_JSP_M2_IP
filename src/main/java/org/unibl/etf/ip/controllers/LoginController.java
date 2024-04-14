@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
 import org.unibl.etf.ip.dao.UserDAO;
 import org.unibl.etf.ip.dtos.User;
 import org.unibl.etf.ip.utilities.PropertyLoader;
+import static org.unibl.etf.ip.utilities.Constants.START_PAGE;
 
 /**
  * Servlet implementation class Controller
  */
 @WebServlet("/Controller")
 public class LoginController extends HttpServlet {
-	private static final String START_PAGE = "/WEB-INF/pages/";
 	private static final long serialVersionUID = 1L;
 
 	/**

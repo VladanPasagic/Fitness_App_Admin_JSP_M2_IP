@@ -15,6 +15,9 @@ public class User implements Serializable {
 	private String password;
 	private String lastName;
 	private String firstName;
+	private String dtype;
+	private String city;
+	private String mail;
 
 	public User() {
 		super();
@@ -27,6 +30,17 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.id = id;
+	}
+
+	public User(int id, String username, String lastName, String firstName, String dtype, String city, String mail) {
+		super();
+		this.username = username;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.id = id;
+		this.dtype = dtype;
+		this.city = city;
+		this.mail = mail;
 	}
 
 	public int getId() {
@@ -69,6 +83,30 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
+	public String getDtype() {
+		return dtype;
+	}
+
+	public void setDtype(String dtype) {
+		this.dtype = dtype;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(username);
@@ -85,5 +123,5 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(username, other.username);
 	}
-	
+
 }

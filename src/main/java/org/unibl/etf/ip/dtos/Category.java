@@ -1,11 +1,13 @@
 package org.unibl.etf.ip.dtos;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Category {
 	private int id;
 	private String name;
-	
+	private List<SpecificAttribute> specificAttributes;
+
 	public Category() {
 		super();
 	}
@@ -49,5 +51,12 @@ public class Category {
 		this.name = name;
 	}
 
-	
+	public List<SpecificAttribute> getSpecificAttributes() {
+		return specificAttributes;
+	}
+
+	public void setSpecificAttributes(List<SpecificAttribute> specificAttributes) {
+		this.specificAttributes = specificAttributes;
+	}
+
 }
