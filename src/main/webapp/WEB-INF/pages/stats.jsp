@@ -35,9 +35,9 @@
 			<%
 			for (Log log : statsBean.getLogs()) {
 				out.println("<tr>");
-				out.println("<td class=\"border\">" + log.getLevel() + "</td>");
-				out.println("<td class=\"border\">" + log.getMessage() + "</td>");
-				out.println("<td class=\"border\">" + log.getTimestamp() + "</td>");
+				out.println("<td class=\"border\">" + log.getLevel());
+				out.println("<td class=\"border\">" + log.getMessage());
+				out.println("<td class=\"border\">" + log.getTimestamp());
 				out.println("</tr>");
 			}
 			%>

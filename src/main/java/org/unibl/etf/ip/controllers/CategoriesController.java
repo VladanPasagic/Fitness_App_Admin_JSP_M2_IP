@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.unibl.etf.ip.beans.CategoriesBean;
+import org.unibl.etf.ip.beans.CategoryBean;
 import org.unibl.etf.ip.dao.CategoryDAO;
 import org.unibl.etf.ip.dao.SpecificAttributeDAO;
 import org.unibl.etf.ip.dtos.Category;
@@ -47,6 +48,8 @@ public class CategoriesController extends HttpServlet {
 		HttpSession session = request.getSession();
 		CategoriesBean categoriesBean = new CategoriesBean();
 		session.setAttribute("categoriesBean", categoriesBean);
+		CategoryBean categoryBean = new CategoryBean(null);
+		session.setAttribute("categoryBean", categoryBean);
 		String action = request.getParameter("action");
 		if (action == null || action.equals(""))
 			address = START_PAGE + "categories.jsp";
@@ -61,10 +64,16 @@ public class CategoriesController extends HttpServlet {
 				specificAttributes.add(new SpecificAttribute(keys[i], values[i]));
 			}
 			SpecificAttributeDAO.saveAttributes(category.getId(), specificAttributes);
-		} else if (action.equals("edit")) {
-
+		} else if (action.equals("close")) {
+			categoryBean = null;
+			session.setAttribute("categoryBean", categoryBean);
 		} else if (action.equals("view")) {
-
+			int id = Integer.parseInt(request.getParameter("id"));
+			List<SpecificAttribute> specificAttributes = SpecificAttributeDAO.getSpecificAttributes(id);
+			Category category = CategoryDAO.findById(id);
+			category.setSpecificAttributes(specificAttributes);
+			categoryBean = new CategoryBean(category);
+			session.setAttribute("categoryBean", categoryBean);
 		} else if (action.equals("delete")) {
 			String id = request.getParameter("id");
 			CategoryDAO.deleteCategory(Integer.parseInt(id));

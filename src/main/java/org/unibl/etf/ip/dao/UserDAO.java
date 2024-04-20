@@ -15,6 +15,7 @@ public class UserDAO {
 
 	private static final String SQL_SELECT_BY_USERNAME_AND_PASSWORD = "select * from user where username=? and password=? and dtype=\"AdminEntity\"";
 	private static final String SQL_READ_USERS = "select * from user";
+	private static final String SQL_INSERT_USER = "insert into user(dtype, username, password) values (?, ?, ?)";
 
 	public static User getByUsernameAndPassword(String username, String password) {
 		User user = null;
@@ -62,5 +63,21 @@ public class UserDAO {
 			}
 		}
 		return users;
+	}
+
+	public static void createUser(User user) {
+		Connection con = ConnectionFactory.getConnection();
+		PreparedStatement ps = null;
+		Object[] values = { "AdvisorEntity", user.getUsername(), user.getPassword() };
+		if (con != null) {
+			try {
+				ps = DAOUtilities.prepareStatement(con, SQL_INSERT_USER, false, values);
+				ps.execute();
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
