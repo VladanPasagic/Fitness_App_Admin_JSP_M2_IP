@@ -65,7 +65,7 @@ public class CategoriesController extends HttpServlet {
 			}
 			SpecificAttributeDAO.saveAttributes(category.getId(), specificAttributes);
 		} else if (action.equals("close")) {
-			categoryBean = null;
+			categoryBean = new CategoryBean(null);
 			session.setAttribute("categoryBean", categoryBean);
 		} else if (action.equals("view")) {
 			int id = Integer.parseInt(request.getParameter("id"));
