@@ -24,7 +24,7 @@
 	<h1>Users View</h1>
 	<br>
 	<div>
-	<label>Create advisor</label>
+		<label>Create advisor</label>
 		<form method="POST" action="?action=save">
 			<label for="username">Username:</label> <input type="text"
 				id="username" name="username" required> <br> <label
@@ -56,12 +56,12 @@
 				out.println("<td class=\"border\">" + user.getUsername() + "</td>");
 				out.println("<td class=\"border\">" + user.getCity() + "</td>");
 				out.println("<td class=\"border\">" + user.getMail() + "</td>");
-				out.println("<td class=\"border\"><a href=\"?action=delete&id=\"" + user.getId() + "\">Delete</a></td>");
+				out.println("<td class=\"border\"><a href=\"?action=delete&id=" + user.getId() + "\">Delete</a></td>");
 				out.println("</tr>");
 			}
 			%>
 		</tbody>
 	</table>
-	
+
 </body>
 </html>

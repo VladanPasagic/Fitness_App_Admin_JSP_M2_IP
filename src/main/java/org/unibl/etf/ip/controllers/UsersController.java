@@ -53,6 +53,9 @@ public class UsersController extends HttpServlet {
 			user.setUsername(username);
 			user.setPassword(password);
 			UserDAO.createUser(user);
+		} else if (action.equals("delete")) {
+			String id = request.getParameter("id");
+			UserDAO.deleteUser(Integer.parseInt(id));
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);

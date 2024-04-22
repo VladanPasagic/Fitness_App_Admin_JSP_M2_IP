@@ -57,7 +57,6 @@ public class CategoriesController extends HttpServlet {
 			String[] keys = request.getParameterValues("key[]");
 			String[] values = request.getParameterValues("value[]");
 			String name = request.getParameter("categoryName");
-			System.out.println(name);
 			Category category = CategoryDAO.createCategory(name);
 			List<SpecificAttribute> specificAttributes = new ArrayList<SpecificAttribute>();
 			for (int i = 0; i < keys.length; i++) {
